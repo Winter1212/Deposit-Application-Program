@@ -90,7 +90,7 @@ namespace DepositApplicationSystem
 
             }
             totalMoney = interest + deposit;
-            monthlyInterest = interest / monthChoice;
+            monthlyInterest = interest / 12;
 
 
             Console.WriteLine("=======================================================");
