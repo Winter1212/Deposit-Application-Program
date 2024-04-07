@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Deposit_Application_Program;
+using System;
 using System.Diagnostics;
 using System.Dynamic;
 
@@ -14,10 +15,8 @@ namespace DepositApplicationSystem
             double monthlyInterest = 0;
             int currencyChoice = 0;
             int monthChoice = 0;
-            int duration = 0;
-            double interestInriel = 0;
-            double interestIndollar = 0;
             String ch = " ";
+            DepositFunction obj = new DepositFunction();
             
             Again:
             Console.WriteLine("========================================");
@@ -41,8 +40,8 @@ namespace DepositApplicationSystem
             Console.WriteLine("1. 1 month");
             Console.WriteLine("2. 2 months");
             Console.WriteLine("3. 3 months");
-            Console.WriteLine("4. 4 months");
-            Console.WriteLine("5. 5 months");
+            Console.WriteLine("4. 6 months");
+            Console.WriteLine("5. 12 months");
             Console.Write("Plese Enter your transaction");
             monthChoice = Convert.ToInt32(Console.ReadLine());
             while (monthChoice !=1 && monthChoice !=2 && monthChoice !=3 && monthChoice != 4 && monthChoice != 5 )
@@ -50,57 +49,10 @@ namespace DepositApplicationSystem
                 Console.WriteLine("Please Enter the valid option");
                 monthChoice = Convert.ToInt32(Console.ReadLine());
             }
-
-            switch(monthChoice)
-            {
-                case 1:
-                    interestInriel = (3.5/100) / 12;
-                    interestIndollar = (3 / 100) / 12;
-                    break;
-                case 2:
-                    interestInriel = (4 / 100) / 6;
-                    interestIndollar = (3.5 / 100) / 6;
-                    break;
-                case 3:
-                    interestInriel = (4.5 / 100) / 4;
-                    interestIndollar = (4 / 100) / 4;
-                    break;
-                case 4:
-                    interestInriel = (6.75/100)/2;
-                    interestIndollar = (5.5/100) / 2;
-                    break;
-                case 5:
-                    interestInriel = 8.5 / 100;
-                    interestIndollar = 8 / 100;
-                    break;
-                default:
-                    break;
-
-
-
-            };
-            if(monthChoice == 4)
-            {
-                duration = 6;
-            }else if(monthChoice == 5 )
-            {
-                duration = 12;
-            }
-
-            if (currencyChoice == 1)
-            {
-                interest = (deposit * interestInriel) - ((deposit * interestInriel) * 0.06);
-
-            }
-            else if (currencyChoice == 2)
-            {
-                interest = (deposit * interestIndollar) - ((deposit * interestIndollar) * 0.06);
-
-            }
-            totalMoney = interest + deposit;
-            
-            monthlyInterest = interest / duration;
-
+            interest = obj.interest(deposit, monthChoice,currencyChoice);
+            totalMoney = obj.totalMoney(deposit,interest);
+            monthlyInterest = obj.monthlyIntereset(interest, monthChoice);
+   
 
             Console.WriteLine("=======================================================");
             Console.WriteLine("\tTotal Money:" + interest.ToString("#,###.00R"));
@@ -119,6 +71,7 @@ namespace DepositApplicationSystem
             else {
                 Console.WriteLine("Exit the program");
             }
+
 
 
 
