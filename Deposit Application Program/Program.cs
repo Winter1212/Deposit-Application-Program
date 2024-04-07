@@ -14,9 +14,10 @@ namespace DepositApplicationSystem
             double monthlyInterest = 0;
             int currencyChoice = 0;
             int monthChoice = 0;
+            int duration = 0;
             double interestInriel = 0;
             double interestIndollar = 0;
-            String ch = "";
+            String ch = " ";
             
             Again:
             Console.WriteLine("========================================");
@@ -77,6 +78,13 @@ namespace DepositApplicationSystem
 
 
 
+            };
+            if(monthChoice == 4)
+            {
+                duration = 6;
+            }else if(monthChoice == 5 )
+            {
+                duration = 12;
             }
 
             if (currencyChoice == 1)
@@ -90,7 +98,8 @@ namespace DepositApplicationSystem
 
             }
             totalMoney = interest + deposit;
-            monthlyInterest = interest / 12;
+            
+            monthlyInterest = interest / duration;
 
 
             Console.WriteLine("=======================================================");
